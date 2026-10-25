@@ -63,7 +63,7 @@
 
         const SUPABASE_URL = 'https://bynetwdwpflflzbnofii.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ5bmV0d2R3cGZsZmx6Ym5vZmlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4ODU4ODksImV4cCI6MjEwODQ2MTg4OX0.kaEIa_xHGIZAfD9djYwtif8WDrnb6BPoaVhrKj2p_2E';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         let products = [];
       
@@ -77,7 +77,7 @@
       
         async function loadData() {
             try {
-                let {data, error} = await supabase.from('products').select('*');
+                let {data, error} = await db.from('products').select('*');
                 if (error) throw error;
                 products = data;
             } catch (e) {
